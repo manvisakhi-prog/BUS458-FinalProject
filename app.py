@@ -12,21 +12,22 @@ model = pickle.load(open("my_model.pkl", "rb"))
 st.markdown("""
     <style>
     .stApp { background-color: #FFFFFF; }
-    h1 { color: #CC0000 !important; text-align: center; border-bottom: 3px solid #000000; }
-    
-    /* Force ALL text (labels, slider numbers, radio text) to Black */
+    h1 { color: #CC0000 !important; text-align: center; border-bottom: 3px solid #000000; 
+    /* ADD THESE LINES RIGHT HERE TO MAKE PROBABILITY BLACK */
+    h3, .stSubheader p {
+        color: #000000 !important;
+        font-weight: bold !important;  }
+
+    /* Keep your other existing CSS below */
     label, .stWidgetLabel, p, [data-baseweb="typo-label-small"], div[data-testid="stMarkdownContainer"] p {
         color: #000000 !important;
-        font-weight: bold !important;
-    }
+        font-weight: bold !important;}
 
-    /* Red Button with White Text */
     div.stButton > button:first-child {
         background-color: #CC0000;
         color: white;
         border: 2px solid #000000;
-        width: 100%;
-    }
+        width: 100%;}
     </style>
     """, unsafe_allow_html=True)
 
