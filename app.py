@@ -93,7 +93,7 @@ if st.button("RUN ANALYSIS"):
     final_input = input_df[model_columns]
     prob = model.predict_proba(final_input)[0][1]
     
-    #Results
+    #Results for the different lenders
     st.divider()
     st.subheader(f"Probability of Approval: {prob:.1%}")
 
