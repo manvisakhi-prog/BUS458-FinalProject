@@ -113,5 +113,5 @@ if st.button("RUN ANALYSIS"):
         st.error("🚫 **Application Denied**")
         st.write("The risk profile exceeds the tolerance of our current lending partners (A, B, or C).")
 
-    # Your contact footer
+    #Our Contact Footer
     st.markdown("<small>Questions? Contact msharm25@ncsu.edu or pjshah3@ncsu.edu</small>", unsafe_allow_html=True)
