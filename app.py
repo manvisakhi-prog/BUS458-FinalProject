@@ -6,10 +6,7 @@ import sklearn
 from sklearn.linear_model import LogisticRegression
 
 # 1. Load the model
-try:
     model = pickle.load(open("my_model.pkl", "rb"))
-except FileNotFoundError:
-    st.error("⚠️ 'my_model.pkl' not found! Put it in the same folder as this script.")
 
 # we wanted color to be black,white,red (help from gemini a bit) 
 st.markdown("""
@@ -90,3 +87,4 @@ if st.button("RUN ANALYSIS"):
         st.info("If you questions about Loan Approval please contact msharm25@ncsu.edu or pjshah3@ncsu.edu")
     else:
         st.error("🚫 Verdict: Applicant is likely **Denied**.")
+        st.info("If you questions about Loan Approval please contact msharm25@ncsu.edu or pjshah3@ncsu.edu")
