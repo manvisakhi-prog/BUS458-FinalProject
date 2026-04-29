@@ -12,6 +12,7 @@ try:
 except FileNotFoundError:
     st.error("⚠️ Files not found! Ensure 'my_model.pkl' and 'scaler.pkl' are in the same folder as app.py.")
 
+# We wanted our colors to be black,white,and red
 # --- THEME CUSTOMIZATION (Red, White, Black) ---
 st.markdown("""
     <style>
@@ -38,6 +39,26 @@ st.markdown("""
         background-color: #000000;
         color: #CC0000;
         border: 2px solid #CC0000;
+    }
+
+    /* NEW STUFF ADDED BELOW */
+    
+    /* Targets the 300 and 850 on the slider */
+    .stSlider [data-baseweb="typo-label-small"] {
+        color: #000000 !important;
+        font-weight: bold !important;
+    }
+
+    /* Targets the current value displayed above the slider thumb */
+    div[data-testid="stThumbValue"] {
+        color: #000000 !important;
+        font-weight: bold !important;
+    }
+
+    /* Ensures all input labels are black */
+    label, .stWidgetLabel {
+        color: #000000 !important;
+        font-weight: bold !important;
     }
     </style>
     """, unsafe_allow_html=True)
