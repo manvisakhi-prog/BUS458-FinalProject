@@ -9,25 +9,47 @@ from sklearn.linear_model import LogisticRegression
 model = pickle.load(open("my_model.pkl", "rb"))
 
 # we wanted color to be black,white,red (help from gemini a bit) 
+# --- THEME CUSTOMIZATION (Red, White, Black) ---
 st.markdown("""
     <style>
-    .stApp { background-color: #FFFFFF; }
-    h1 { color: #CC0000 !important; text-align: center; border-bottom: 3px solid #000000; 
-    /* ADD THESE LINES RIGHT HERE TO MAKE PROBABILITY BLACK */
-    h3, .stSubheader p {
-        color: #000000 !important;
-        font-weight: bold !important;  }
+    /* 1. Background */
+    .stApp { 
+        background-color: #FFFFFF !important; 
+    }
+    
+    /* 2. Main Title (Red) */
+    h1 { 
+        color: #CC0000 !important; 
+        text-align: center; 
+        border-bottom: 3px solid #000000; 
+    }
 
-    /* Keep your other existing CSS below */
-    label, .stWidgetLabel, p, [data-baseweb="typo-label-small"], div[data-testid="stMarkdownContainer"] p {
+    /* 3. THE FIX: Probability Header & Subheaders (Black) */
+    h3, .stSubheader, [data-testid="stHeader"] {
         color: #000000 !important;
-        font-weight: bold !important;}
+    }
 
+    /* 4. All Labels, Slider Numbers, and Radio Text (Black) */
+    label, .stWidgetLabel, p, 
+    [data-baseweb="typo-label-small"], 
+    div[data-testid="stMarkdownContainer"] p,
+    span[data-baseweb="typo-label-small"] {
+        color: #000000 !important;
+        font-weight: bold !important;
+    }
+
+    /* 5. Results Probability Text specifically */
+    .stMarkdown h3 {
+        color: #000000 !important;
+    }
+
+    /* 6. Red Button */
     div.stButton > button:first-child {
         background-color: #CC0000;
-        color: white;
+        color: white !important;
         border: 2px solid #000000;
-        width: 100%;}
+        width: 100%;
+    }
     </style>
     """, unsafe_allow_html=True)
 
