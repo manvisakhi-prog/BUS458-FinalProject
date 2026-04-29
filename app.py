@@ -30,7 +30,7 @@ st.markdown("""
     </style>
     """, unsafe_allow_html=True)
 
-st.title("🏦 LOAN APPROVAL OPTIMIZER")
+st.title("🏦 WOLF FINANCIAL UNDERWRITING PORTAL")
 
 #Input Fields
 col1, col2 = st.columns(2)
