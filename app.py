@@ -7,13 +7,11 @@ from sklearn.linear_model import LogisticRegression
 
 # 1. Load the model
 try:
-    # Matches the filename you provided earlier
     model = pickle.load(open("my_model.pkl", "rb"))
 except FileNotFoundError:
     st.error("⚠️ 'my_model.pkl' not found! Put it in the same folder as this script.")
-    st.stop()
 
-# 2. Theme Customization (Red, White, Black)
+# we wanted color to be black,white,red (help from gemini a bit) 
 st.markdown("""
     <style>
     .stApp { background-color: #FFFFFF; }
@@ -37,7 +35,7 @@ st.markdown("""
 
 st.title("🏦 LOAN APPROVAL OPTIMIZER")
 
-# 3. Input Fields
+#Input Fields
 col1, col2 = st.columns(2)
 
 with col1:
@@ -50,11 +48,11 @@ with col2:
     reason = st.selectbox("Reason for Loan", ["Credit Card Refinancing", "Debt Conslidated", "Home Improvement", "Major Purchase", "Other"])
     employment = st.selectbox("Employment Status", ["Full-time", "Part-time", "Unemployed"])
     
-    # Yes/No Picker instead of 0/1
+    # Yes/No Picker 
     bankrupt_choice = st.radio("Ever Bankrupt or Foreclosed?", ["No", "Yes"])
     bankrupt = 1 if bankrupt_choice == "Yes" else 0
 
-# 4. Prediction Logic
+#Prediction Logic
 if st.button("RUN ANALYSIS"):
     # Build the input data
     features = {
@@ -66,35 +64,29 @@ if st.button("RUN ANALYSIS"):
         "Ever_Bankrupt_or_Foreclose": bankrupt
     }
     input_df = pd.DataFrame([features])
-
-    # Get the 29 columns the model expects
     model_columns = model.feature_names_in_
 
-    # Match the Reason and Employment to model columns
+    # Match the reason and employment to model columns
     reason_col = f"Reason_{reason.lower().replace(' ', '_')}"
     input_df[reason_col] = 1
     
     emp_col = f"Employment_Status_{employment.lower().replace('-', '_')}"
     input_df[emp_col] = 1
 
-    # Fill missing columns with 0 and sort
     for col in model_columns:
         if col not in input_df.columns:
             input_df[col] = 0
     
     final_input = input_df[model_columns]
-    
-    # Get prediction
     prob = model.predict_proba(final_input)[0][1]
     
-    # 5. Results
+    #Results
     st.divider()
     st.subheader(f"Probability of Approval: {prob:.1%}")
     
     if prob > 0.5:
-        st.success("✅ Verdict: Applicant is likely **Approved**.")
-        st.info("💰 **Strategy:** Route to **Lender B** for maximum **$350** payout.")
+        st.success("✅ Verdict: Applicant can be **Approved**.")
+        st.info("💰 **Strategy:** Route to **Lender B** for Approved Loan **$350** payout.")
+        st.info("If you questions about Loan Approval please contact msharm25@ncsu.edu or pjshah3@ncsu.edu")
     else:
         st.error("🚫 Verdict: Applicant is likely **Denied**.")
-
-st.markdown("<center><small>BUS 458 Final Exam Submission</small></center>", unsafe_allow_html=True)
