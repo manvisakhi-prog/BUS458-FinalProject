@@ -9,25 +9,21 @@ from sklearn.linear_model import LogisticRegression
 model = pickle.load(open("my_model.pkl", "rb"))
 
 # we wanted color to be black,white,red (help from gemini a bit) 
-# --- THEME CUSTOMIZATION (Red, White, Black) ---
 st.markdown("""
     <style>
     /* 1. Background */
     .stApp { 
-        background-color: #FFFFFF !important; 
-    }
+        background-color: #FFFFFF !important; }
     
     /* 2. Main Title (Red) */
     h1 { 
         color: #CC0000 !important; 
         text-align: center; 
-        border-bottom: 3px solid #000000; 
-    }
+        border-bottom: 3px solid #000000; }
 
     /* 3. THE FIX: Probability Header & Subheaders (Black) */
     h3, .stSubheader, [data-testid="stHeader"] {
-        color: #000000 !important;
-    }
+        color: #000000 !important;}
 
     /* 4. All Labels, Slider Numbers, and Radio Text (Black) */
     label, .stWidgetLabel, p, 
@@ -35,21 +31,18 @@ st.markdown("""
     div[data-testid="stMarkdownContainer"] p,
     span[data-baseweb="typo-label-small"] {
         color: #000000 !important;
-        font-weight: bold !important;
-    }
+        font-weight: bold !important;}
 
     /* 5. Results Probability Text specifically */
     .stMarkdown h3 {
-        color: #000000 !important;
-    }
+        color: #000000 !important; }
 
     /* 6. Red Button */
     div.stButton > button:first-child {
         background-color: #CC0000;
         color: white !important;
         border: 2px solid #000000;
-        width: 100%;
-    }
+        width: 100%;}
     </style>
     """, unsafe_allow_html=True)
 
@@ -86,7 +79,7 @@ if st.button("RUN ANALYSIS"):
     input_df = pd.DataFrame([features])
     model_columns = model.feature_names_in_
 
-    # Match the reason and employment to model columns
+
     reason_col = f"Reason_{reason.lower().replace(' ', '_')}"
     input_df[reason_col] = 1
     
