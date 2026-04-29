@@ -2,6 +2,8 @@ import streamlit as st
 import pandas as pd
 import pickle
 import numpy as np
+import sklearn
+from sklearn.linear_model import LogisticRegression
 
 # 1. Load your specific files
 try:
