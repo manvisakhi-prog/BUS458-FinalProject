@@ -97,7 +97,7 @@ if st.button("RUN ANALYSIS"):
     st.divider()
     st.subheader(f"Probability of Approval: {prob:.1%}")
 
-if prob > 0.5:
+    if prob > 0.5:
         st.success("✅ Verdict: Applicant can be Approved.")
         st.info("💰 **Strategy:** Route to **Lender B** for Approved Loan **$350** payout.")
     else:
