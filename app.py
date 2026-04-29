@@ -6,7 +6,7 @@ import sklearn
 from sklearn.linear_model import LogisticRegression
 
 # 1. Load the model
-    model = pickle.load(open("my_model.pkl", "rb"))
+model = pickle.load(open("my_model.pkl", "rb"))
 
 # we wanted color to be black,white,red (help from gemini a bit) 
 st.markdown("""
