@@ -97,10 +97,18 @@ if st.button("RUN ANALYSIS"):
     st.divider()
     st.subheader(f"Probability of Approval: {prob:.1%}")
     
-    if prob > 0.5:
-        st.success("✅ Verdict: Applicant can be **Approved**.")
-        st.info("💰 **Strategy:** Route to **Lender B** for Approved Loan **$350** payout.")
-        st.info("If you questions about Loan Approval please contact msharm25@ncsu.edu or pjshah3@ncsu.edu")
+   if prob > 0.70:
+        st.success("✅ **High Confidence Approval**")
+        st.info(f"💰 **Strategy:** Route to **Lender B**. Applicant qualifies for our premium partner. **Estimated Payout: $350**")
+        
+    elif prob >= 0.50:
+        st.success("✅ **Standard Approval**")
+        st.info(f"💰 **Strategy:** Route to **Lender A**. Solid applicant, but may not meet Lender B's strict tier. **Estimated Payout: $250**")
+        
+    elif prob > 0.35:
+        st.warning("⚠️ **Marginal Approval**")
+        st.info(f"💰 **Strategy:** Route to **Lender C**. Higher likelihood of closing with this flexible partner. **Estimated Payout: $150**")
+        
     else:
-        st.error("🚫 Verdict: Applicant is likely **Denied**.")
-        st.info("If you questions about Loan Approval please contact msharm25@ncsu.edu or pjshah3@ncsu.edu")
+        st.error("🚫 **Application Denied**")
+        st.write("The risk profile exceeds the tolerance of our current lending partners (A, B, or C).")
