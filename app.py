@@ -9,7 +9,6 @@ from sklearn.linear_model import LogisticRegression
 try:
     # UPDATED: Matches the filename 'my_model.pkl' you provided 
     model = pickle.load(open("my_model.pkl", "rb"))
-    scaler = pickle.load(open("scaler.pkl", "rb"))
 except FileNotFoundError:
     st.error("⚠️ Files not found! Ensure 'my_model.pkl' and 'scaler.pkl' are in the same folder as app.py.")
 
