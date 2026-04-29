@@ -16,47 +16,43 @@ except FileNotFoundError:
 # --- THEME CUSTOMIZATION (Red, White, Black) ---
 st.markdown("""
     <style>
-    /* Change background to white and text to black */
     .stApp {
         background-color: #FFFFFF;
         color: #000000;
     }
-    /* Style the main header in Red */
     h1 {
         color: #CC0000 !important;
         text-align: center;
         border-bottom: 3px solid #000000;
         padding-bottom: 10px;
     }
-    /* Make buttons Red with White text */
     div.stButton > button:first-child {
         background-color: #CC0000;
         color: white;
         border: 2px solid #000000;
         width: 100%;
     }
-    div.stButton > button:hover {
-        background-color: #000000;
-        color: #CC0000;
-        border: 2px solid #CC0000;
-    }
 
-    /* NEW STUFF ADDED BELOW */
-    
-    /* Targets the 300 and 850 on the slider */
+    /* Fix for slider min/max (300/850) */
     .stSlider [data-baseweb="typo-label-small"] {
         color: #000000 !important;
         font-weight: bold !important;
     }
 
-    /* Targets the current value displayed above the slider thumb */
+    /* Fix for slider value bubble */
     div[data-testid="stThumbValue"] {
         color: #000000 !important;
         font-weight: bold !important;
     }
 
-    /* Ensures all input labels are black */
-    label, .stWidgetLabel {
+    /* NEW: Fix for Radio button labels (Yes/No or 0/1) */
+    div[data-testid="stRadio"] label p {
+        color: #000000 !important;
+        font-weight: bold !important;
+    }
+
+    /* Fix for all other general labels and text */
+    label, .stWidgetLabel, .stMarkdown p {
         color: #000000 !important;
         font-weight: bold !important;
     }
