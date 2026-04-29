@@ -99,7 +99,7 @@ if st.button("RUN ANALYSIS"):
 
     if prob > 0.70:
         st.success("✅ **High Confidence Approval**")
-        st.info(f"💰 **Strategy:** Route to Lender B. Applicant qualifies for our premium partner. **Estimated Payout: $350**")
+        st.info(f"💰 **Strategy: Route to Lender B. Applicant qualifies for our premium partner. **Estimated Payout: $350**")
         
     elif prob >= 0.50:
         st.success("✅ **Standard Approval**")
